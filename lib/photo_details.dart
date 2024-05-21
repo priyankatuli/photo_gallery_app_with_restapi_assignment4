@@ -23,19 +23,20 @@ class PhotoDetails extends StatelessWidget{
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 30,),
-              SizedBox(
-                height: 600,
-                width: 600,
-                child: Image.network(imgUrl!),
-              ),
-              const SizedBox(height: 30,),
+              //const SizedBox(height: 30,),
+
+                SizedBox(
+                  //height: 400,
+                  //width: 400,
+                  child: Image.network(imgUrl!),
+                ),
+              const SizedBox(height: 20,),
               Wrap(
                 alignment: WrapAlignment.start,
                 children: [
                   Text('Title: $title',style: const TextStyle(
                       fontSize: 16,
-                      fontWeight: FontWeight.bold
+                      fontWeight: FontWeight.bold,
                   ),),
                   Center(
                     child: Text('ID: $id',style: const TextStyle(

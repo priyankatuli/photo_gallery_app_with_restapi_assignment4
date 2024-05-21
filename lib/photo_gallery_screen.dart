@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:photo_gallery_app_with_restapi_assignment4/photo_details.dart';
 import 'package:photo_gallery_app_with_restapi_assignment4/photo_property.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+
 
 
 class PhotoGalleryScreen extends StatefulWidget{
@@ -45,13 +45,12 @@ class _PhotoGalleryScreenState extends State<PhotoGalleryScreen>{
 
             ),
           ),
-          child:ListView.separated(
+          child:ListView.builder(
             itemCount: photoList.length,
             itemBuilder: (context,index){
               return _buildPhotoItem(photoList[index] );
             },
-            separatorBuilder: (_, index) => const Divider(),
-
+            //separatorBuilder: (_, index) => const Divider(),
           ),
         )
 
@@ -63,16 +62,18 @@ class _PhotoGalleryScreenState extends State<PhotoGalleryScreen>{
 
      return ListTile(
 
-      //Image.network(photoList[index].thumbnailUrl.toString(),
-      //errrorBuilder: (context, error, stackTrace) {
-      //return Icon(Icons.broken_image);
-      //},
-       leading:
-      CachedNetworkImage(
-        imageUrl: photo.thumbnailUrl.toString(), //?? 'https://jsonplaceholder.typicode.com/photos',
-        placeholder: (context, url) => const CircularProgressIndicator(),
-        errorWidget: (context, url, error) =>const Icon(Icons.error),
-      ),
+      leading: Image.network(photo.thumbnailUrl.toString(),
+      errorBuilder: (context, error, stackTrace) {
+      return Icon(Icons.broken_image);
+      },
+    ),
+
+      //CachedNetWorkImage doesn't support web
+      //CachedNetworkImage(
+        //imageUrl: photo.thumbnailUrl.toString(), //?? 'https://jsonplaceholder.typicode.com/photos',
+        //placeholder: (context, url) => const CircularProgressIndicator(),
+        //errorWidget: (context, url, error) =>const Icon(Icons.error),
+
       title: Text(photo.title.toString()),
       onTap: (){
         Navigator.push(context, MaterialPageRoute(builder: (context) => PhotoDetails(
@@ -82,7 +83,7 @@ class _PhotoGalleryScreenState extends State<PhotoGalleryScreen>{
         )));
 
       },
-    );
+     );
   }
 
   Future<void>_getPhotoGalleryList () async{

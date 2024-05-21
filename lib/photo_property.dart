@@ -9,7 +9,6 @@ class PhotoProperty {
   PhotoProperty(
       {required this.albumId, required this.id, required this.title, required this.url, required this.thumbnailUrl});
 
-
   factory PhotoProperty.fromJson(Map<String, dynamic> json) => PhotoProperty(
     albumId: json["albumId"],
     id: json["id"],
