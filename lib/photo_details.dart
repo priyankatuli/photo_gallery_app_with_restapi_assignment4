@@ -18,18 +18,21 @@ class PhotoDetails extends StatelessWidget{
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.00),
+          padding: const EdgeInsets.all(8.00),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              //const SizedBox(height: 30,),
+              const SizedBox(height: 20,),
+                 SizedBox(
+                   //height: 400,
+                   //width: 400,
+                   child: Image.network(imgUrl!, width: 450,height: 450,
+                   fit: BoxFit.cover,
+                  )
+                 ),
 
-                SizedBox(
-                  //height: 400,
-                  //width: 400,
-                  child: Image.network(imgUrl!),
-                ),
+
               const SizedBox(height: 20,),
               Wrap(
                 alignment: WrapAlignment.start,
